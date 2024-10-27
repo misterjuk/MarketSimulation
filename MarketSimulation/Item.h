@@ -1,24 +1,25 @@
-#pragma once
-#include <string>
+    #pragma once
+    #include <string>
 
-enum ItemID
-{
-    Apple,
-    Tomato,
-    Banana
-};
+    enum ItemID
+    {
+        Apple,
+        Tomato,
+        Banana
+    };
 
 
-struct Item
-{
-    ItemID Id;
-    int Cost;
-    int Supply;
-    float Demand;
+    struct Item
+    {
+        std::string Name;
+        float Cost;
+        int Supply;
+        float Demand;
 
-    
-    Item(ItemID id, int cost, int supply, float demand)
-        : Id(id), Cost(cost), Supply(supply), Demand(demand) {}
-};
+        Item() : Name("Garbage"), Cost(0.0f), Supply(0), Demand(0.0f) {}
+        
+        Item(const std::string& name, float cost, int supply, float demand)
+            : Name(name), Cost(cost), Supply(supply), Demand(demand) {}
+    };
 
 

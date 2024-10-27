@@ -8,9 +8,9 @@
 
 int main(int argc, char* argv[])
 {
-    std::unique_ptr market = std::make_unique<Market>();
+    const std::unique_ptr market = std::make_unique<Market>();
 
-    std::unique_ptr user = std::make_unique<User>("XXXGoldInMyVeinsXXX", 100);
+    const std::unique_ptr user = std::make_unique<User>("XXXGoldInMyVeinsXXX", 100, market.get());
 
     bool isActive{true};
     while(isActive == true)
@@ -19,9 +19,8 @@ int main(int argc, char* argv[])
         system("color a");
         market->PrintMarket();
         user->PrintStats();
-        std::string response;
-        std::cin >> response;
-        if(response == "0")
+        std::string response = user->HandleInput();
+        if(response == "exit")
         {
             isActive = false;
         }

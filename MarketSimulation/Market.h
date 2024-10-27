@@ -1,5 +1,6 @@
 #pragma once
 
+#include <map>
 #include <vector>
 
 #include "Item.h"
@@ -16,9 +17,10 @@ public:
     Market& operator=(Market&& other) = delete;
 
     void Initialize();
-    void PlaceOrder(ItemID itemID);
+    void PlaceBuyOrder(std::pmr::map<ItemID, Item>& userInventory, const ItemID itemId, float* userMoney);
+    void PlaceSellOrder(std::pmr::map<ItemID, Item>& userInventory, const ItemID itemId, float* userMoney);
     void PrintMarket();
 private:
 
-    std::vector<Item> Items;
+    std::map<ItemID, Item> Items;
 };
