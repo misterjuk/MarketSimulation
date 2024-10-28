@@ -23,10 +23,13 @@ public:
     User& operator=(User&& other) noexcept = delete;
 
     void PrintStats() const;
+    void PrintInstructions() const;
 private:
     float m_Gold;
     std::string m_Name;
 
     Market* m_MarketPtr;
     std::pmr::map<ItemID, Item> m_Inventory;
+
+    int m_SelectedItemId{};
 };

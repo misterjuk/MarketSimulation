@@ -5,7 +5,8 @@
     {
         Apple,
         Tomato,
-        Banana
+        Banana,
+        Last
     };
 
 

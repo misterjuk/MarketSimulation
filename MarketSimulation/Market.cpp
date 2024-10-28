@@ -13,8 +13,12 @@ void Market::Initialize()
 {
 
     Item apple("Apple", 20.0f, 10, 2.0f);
+    Item tomato("Tomato", 10.0f, 20, 2.0f);
+    Item banana("Banana", 5, 50, 10);
     
     Items.emplace(Apple,apple);
+    Items.emplace(Tomato,tomato);
+    Items.emplace(Banana, banana);
 }
 
 void Market::PlaceBuyOrder( std::pmr::map<ItemID, Item>& userInventory, const ItemID itemId, float* userMoney)
@@ -63,6 +67,8 @@ void Market::PlaceSellOrder( std::pmr::map<ItemID, Item>& userInventory, const I
 
 void Market::PrintMarket()
 {
+    std::cout << "      Market " << '\n';
+    
     for (const auto& val : Items | std::views::values)
     {
         std::cout << "Name: " << val.Name
