@@ -26,11 +26,12 @@ void Market::PlaceBuyOrder( std::pmr::map<ItemID, Item>& userInventory, const It
     if (Items.contains(itemId))
     {
         Item* askedItem = &Items[itemId];
-        if(*userMoney >= askedItem->Cost)
+        if(*userMoney >= askedItem->FluctuatingCost)
         {
             askedItem->Supply -= 1;
             askedItem->Demand += 1;
-            *userMoney -=  askedItem->Cost;
+            *userMoney -=  askedItem->FluctuatingCost;
+            askedItem->FluctuatingCost =  askedItem->Cost * 1 * askedItem->Demand;
 
             if(userInventory.contains(itemId))
             {
@@ -55,9 +56,10 @@ void Market::PlaceSellOrder( std::pmr::map<ItemID, Item>& userInventory, const I
             {
                 Item* askedItem = &Items[itemId];
                 
-                *userMoney += askedItem->Cost;
+                *userMoney += askedItem->FluctuatingCost;
                 askedItem->Supply += 1;
                 askedItem->Demand -= 1;
+                askedItem->FluctuatingCost =  askedItem->Cost * 1 * askedItem->Demand;
 
                 userInventory[itemId].Supply -= 1;
             }
@@ -72,7 +74,7 @@ void Market::PrintMarket()
     for (const auto& val : Items | std::views::values)
     {
         std::cout << "Name: " << val.Name
-        << "Cost: " << val.Cost
+        << "Cost: " << val.FluctuatingCost
         << "Supply: " << val.Supply
         << "Demand: " << val.Demand << '\n';
     }

@@ -16,11 +16,12 @@
         float Cost;
         int Supply;
         float Demand;
+        float FluctuatingCost;
 
-        Item() : Name("Garbage"), Cost(0.0f), Supply(0), Demand(0.0f) {}
+        Item() : Name("Garbage"), Cost(0.0f), Supply(0), Demand(0.0f), FluctuatingCost(0.0f) {}
         
         Item(const std::string& name, float cost, int supply, float demand)
-            : Name(name), Cost(cost), Supply(supply), Demand(demand) {}
+            : Name(name), Cost(cost), Supply(supply), Demand(demand), FluctuatingCost(cost) {}
     };
 
 

@@ -19,6 +19,7 @@ int main(int argc, char* argv[])
         system("color a");
         market->PrintMarket();
         user->PrintStats();
+        user->PrintInstructions();
         std::string response = user->HandleInput();
         if(response == "exit")
         {
