@@ -20,6 +20,8 @@ public:
     void PlaceBuyOrder(std::pmr::map<ItemID, Item>& userInventory, const ItemID itemId, float* userMoney);
     void PlaceSellOrder(std::pmr::map<ItemID, Item>& userInventory, const ItemID itemId, float* userMoney);
     void PrintMarket();
+
+    const  std::map<ItemID, Item>& GetItems() { return Items; };
 private:
 
     std::map<ItemID, Item> Items;

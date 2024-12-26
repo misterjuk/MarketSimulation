@@ -73,7 +73,7 @@ void Market::PrintMarket()
     
     for (const auto& val : Items | std::views::values)
     {
-        std::cout << "Name: " << val.Name
+        std::cout <<"Name: " << val.Name
         << "Cost: " << val.FluctuatingCost
         << "Supply: " << val.Supply
         << "Demand: " << val.Demand << '\n';

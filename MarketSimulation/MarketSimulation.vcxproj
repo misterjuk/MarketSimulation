@@ -155,12 +155,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CSVWriter.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Market.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CSVWriter.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Market.h" />
     <ClInclude Include="User.h" />
