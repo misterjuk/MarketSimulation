@@ -25,7 +25,5 @@ public:
 private:
 
 
-    float CalculateDynamicPriceV1(const Item& Item);
-    float CalculateDynamicPriceV2(const Item& Item);
     std::map<ItemID, Item> Items;
 };

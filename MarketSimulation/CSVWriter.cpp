@@ -35,12 +35,12 @@ void CSVWriter::WriteToCSV(const std::map<ItemID, Item>& items) {
     }
 
     // Write headers only if it's the first write operation
-    if (isFirstWrite == false) {
+    /*if (isFirstWrite == false) {
         file << "Iteration,ItemID,ItemName,Cost,Supply,Demand,FluctuatingCost\n";
-    }
+    }*/
 
     // Write the iteration number and data for each item
-    for (const auto& [id, item] : items) {
+   /* for (const auto& [id, item] : items) {
         file << iteration << ','
             << id << ','
             << item.Name << ','
@@ -48,6 +48,11 @@ void CSVWriter::WriteToCSV(const std::map<ItemID, Item>& items) {
             << item.Supply << ','
             << item.Demand << ','
             << item.FluctuatingCost << '\n';
+    }*/
+
+    for (const auto& [id, item] : items) 
+    {
+        file << item.FluctuatingCost << '\n';
     }
 
     // Increment iteration counter for the next call

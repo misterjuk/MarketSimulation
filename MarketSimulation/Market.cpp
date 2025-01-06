@@ -67,33 +67,7 @@ void Market::PlaceSellOrder( std::pmr::map<ItemID, Item>& userInventory, const I
     }
 }
 
-float Market::CalculateDynamicPriceV1(const Item& Item)
-{
-   // askedItem->FluctuatingCost =  askedItem->Cost * 1 * askedItem->Demand;
 
-    //
-    float NewPrice{};
-    NewPrice = Item.Cost * Item.Demand;
-    return NewPrice;
-}
-
-float Market::CalculateDynamicPriceV2(const Item& Item)
-{
-    // askedItem->FluctuatingCost =  askedItem->Cost * 1 * askedItem->Demand;
-
-     //
-    float NewPrice{};
-
-    float DeltaDemand = (Item.Demand - Item.AverageDemand) / Item.AverageDemand;
-    float DeltaSupply = (Item.Supply - Item.AverageSupply) / Item.AverageSupply;
-
-   
-    NewPrice = Item.Cost * (1 + Item.DemandWeight   * DeltaDemand   +
-                                Item.SupplyWeight   * DeltaSupply   +
-                                Item.ScarcityWeight * Item.Scarcity +
-                                Item.EventWeight    * Item.EventMultiplier);
-        return NewPrice;
-}
 
 void Market::PrintMarket()
 {

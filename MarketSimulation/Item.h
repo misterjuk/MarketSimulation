@@ -34,7 +34,15 @@
         Item() : Name("Garbage"), Cost(0.0f), Supply(0), Demand(0.0f), FluctuatingCost(0.0f) {}
         
         Item(const std::string& name, float cost, int supply, float demand)
-            : Name(name), Cost(cost), Supply(supply), Demand(demand), FluctuatingCost(cost) {}
+            : Name(name), Cost(cost), AverageSupply(supply), AverageDemand(demand) 
+        {
+
+            CalculateDynamicPriceV2();
+        }
+
+
+        float CalculateDynamicPriceV1();
+        float CalculateDynamicPriceV2();
     };
 
 
