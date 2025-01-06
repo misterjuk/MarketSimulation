@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
         user->PrintStats();
         user->PrintInstructions();
 
-        csvWriter->WriteToCSV(market->GetItems());
+       // csvWriter->WriteToCSV(market->GetItems());
      
         std::string response = user->HandleInput();
         if(response == "exit")

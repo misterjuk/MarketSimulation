@@ -10,7 +10,7 @@
 class CSVWriter {
 public:
     // Default Constructor
-    CSVWriter() = default;
+    CSVWriter();
 
     // Destructor
     ~CSVWriter() = default;
@@ -23,7 +23,9 @@ public:
 
 private:
 
+    int iteration = 0;
     std::string filepath{ "C:\\JukCo\\output.csv" };
+    bool isFirstWrite{true};
 };
 
 #endif // CSV_WRITER_H
