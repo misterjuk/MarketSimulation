@@ -1,17 +1,17 @@
 #include "Item.h"
 
 
-float Item::CalculateDynamicPriceV1()
+void Item::CalculateDynamicPriceV1()
 {
     // askedItem->FluctuatingCost =  askedItem->Cost * 1 * askedItem->Demand;
 
      //
     float NewPrice{};
     NewPrice = Cost * Demand;
-    return NewPrice;
+    FluctuatingCost = NewPrice;
 }
 
-float Item::CalculateDynamicPriceV2()
+void Item::CalculateDynamicPriceV2()
 {
     // askedItem->FluctuatingCost =  askedItem->Cost * 1 * askedItem->Demand;
 
@@ -27,5 +27,5 @@ float Item::CalculateDynamicPriceV2()
                             ScarcityWeight * Scarcity +
                             EventWeight    * EventMultiplier);
 
-    return NewPrice;
+    FluctuatingCost = NewPrice;
 }

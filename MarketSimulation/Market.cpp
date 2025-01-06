@@ -12,7 +12,7 @@ Market::Market()
 void Market::Initialize()
 {
 
-    Item apple("Apple", 20.0f, 10, 0.0f);
+    Item apple("Apple", 10, 10, 5);
     //Item tomato("Tomato", 10.0f, 20, 0.0f);
     //Item banana("Banana", 5, 50, 0);
     
@@ -26,12 +26,12 @@ void Market::PlaceBuyOrder( std::pmr::map<ItemID, Item>& userInventory, const It
     if (Items.contains(itemId))
     {
         Item* askedItem = &Items[itemId];
-        if(*userMoney >= askedItem->FluctuatingCost)
+        if(*userMoney >= askedItem->FluctuatingCost && askedItem->Supply > 0)
         {
             askedItem->Supply -= 1;
             askedItem->Demand += 1;
             *userMoney -=  askedItem->FluctuatingCost;
-            askedItem->FluctuatingCost =  askedItem->Cost * ( 1 + (askedItem->Demand - askedItem->Supply)/ (askedItem->Supply + 0.00001f));
+           askedItem->CalculateDynamicPriceV2();
 
             if(userInventory.contains(itemId))
             {
@@ -59,7 +59,7 @@ void Market::PlaceSellOrder( std::pmr::map<ItemID, Item>& userInventory, const I
                 *userMoney += askedItem->FluctuatingCost;
                 askedItem->Supply += 1;
                 askedItem->Demand -= 1;
-                askedItem->FluctuatingCost =  askedItem->Cost * 1 * askedItem->Demand;
+                askedItem->CalculateDynamicPriceV2();
 
                 userInventory[itemId].Supply -= 1;
             }
